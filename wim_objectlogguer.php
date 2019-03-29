@@ -17,7 +17,7 @@
     $this->name = 'wim_objectlogguer';
     $this->tab = 'front_office_features';
     $this->version = '1.0.0';
-    $this->author = 'Carlos Bunny';
+    $this->author = 'Carlos';
     $this->need_instance = 0;
     $this->ps_versions_compliancy = array('min' => '1.6', 'max' => _PS_VERSION_); 
     $this->bootstrap = true;
@@ -42,12 +42,15 @@
        include(dirname(__FILE__).'\sql\install.php');
        // return parent::install();
 
+       
        return parent::install() &&
        $this->registerHook('actionObjectAddAfter') &&
        $this->registerHook('actionObjectDeleteAfter') &&
        $this->registerHook('actionObjectUpdateAfter');
+       
     }
 
+    
 
     public function hookActionObjectAddAfter($params)
     {
