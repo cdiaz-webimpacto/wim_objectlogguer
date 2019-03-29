@@ -24,7 +24,7 @@
 *  International Registered Trademark & Property of PrestaShop SA
 */
 
-require_once('classes/ObjectLogger.php');
+require_once ('classes/ObjectLogger.php');
 
 class Wim_objectlogguer extends Module
 {
