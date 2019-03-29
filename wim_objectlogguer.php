@@ -26,8 +26,7 @@
 
 require_once('classes/ObjectLogger.php');
 
-if (!defined('_PS_VERSION_'))
-{
+if (!defined('_PS_VERSION_')) {
     exit;
 }
 
@@ -72,8 +71,7 @@ class WimObjectLogguer extends Module
         $annad->object_type = get_class($params['object']);
         $annad->message = "Object ". get_class($params['object']) . " with id " . $params['object']->id . " add";
         $annad->date_add = date("Y-m-d H:i:s");
-        if (get_class($params['object']) != 'ObjectLogger') 
-        {
+        if (get_class($params['object']) != 'ObjectLogger') {
             $annad->add();
         }
     }
@@ -86,8 +84,7 @@ class WimObjectLogguer extends Module
         $dele->object_type = get_class($params['object']);
         $dele->message = "Object ". get_class($params['object']) . " with id " . $params['object']->id . " delete";
         $dele->date_add = date("Y-m-d H:i:s");
-        if (get_class($params['object']) != 'ObjectLogger') 
-        {
+        if (get_class($params['object']) != 'ObjectLogger') {
             $dele->add();
         }
     }
@@ -100,8 +97,7 @@ class WimObjectLogguer extends Module
         $up->object_type = get_class($params['object']);
         $up->message = "Object ". get_class($params['object']) . " with id " . $params['object']->id . " update";
         $up->date_add = date("Y-m-d H:i:s");
-        if (get_class($params['object']) != 'ObjectLogger') 
-        {
+        if (get_class($params['object']) != 'ObjectLogger') {
             $up->add();
         }
     }   
