@@ -55,7 +55,7 @@ class WimObjectLogguer extends Module
     }
 
     public function install()
-    {    
+    {
         include(dirname(__FILE__).'\sql\install.php');
         return parent::install() &&
         $this->registerHook('actionObjectAddAfter') &&
@@ -100,5 +100,5 @@ class WimObjectLogguer extends Module
         if (get_class($params['object']) != 'ObjectLogger') {
             $up->add();
         }
-    }   
+    }
 }
