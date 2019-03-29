@@ -1,5 +1,4 @@
 <?php
-
 /**
 * 2007-2016 PrestaShop
 *
@@ -27,7 +26,8 @@
 
 class ObjectLogger extends ObjectModel
   {  
-    public static $definition = array(
+    public static $definition = array
+    (
         'table' => 'objectlogguer',
         'primary' => 'id_objectlogguer',
         'fields' => array(           
@@ -38,5 +38,4 @@ class ObjectLogger extends ObjectModel
             'date_add' =>  array('type' => self::TYPE_DATE, 'validate' => 'isDate', 'copy_post' => false),
         ),
     );
-
 }
