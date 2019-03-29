@@ -24,21 +24,21 @@
 *  International Registered Trademark & Property of PrestaShop SA
 */
 
-require_once ('classes/ObjectLogger.php');
+require_once('classes/ObjectLogger.php');
 
-  if (!defined('_PS_VERSION_'))
-    exit;
-   
 class Wim_objectlogguer extends Module
 {
+  if (!defined('_PS_VERSION_'))
+    exit;
+
     public function __construct()
-  {
+    {
         $this->name = 'wim_objectlogguer';
         $this->tab = 'front_office_features';
         $this->version = '1.0.0';
         $this->author = 'Carlos';
         $this->need_instance = 0;
-        $this->ps_versions_compliancy = array('min' => '1.6', 'max' => _PS_VERSION_); 
+        $this->ps_versions_compliancy = array('min' => '1.6', 'max' => _PS_VERSION_);
         $this->bootstrap = true;
     
         parent::__construct();
@@ -48,20 +48,18 @@ class Wim_objectlogguer extends Module
     
         $this->confirmUninstall = $this->l('Are you sure you want to uninstall?');
     
-        if (!Configuration::get('MYMODULE_NAME')) {      
-          $this->warning = $this->l('No name provided');
-
+        if (!Configuration::get('MYMODULE_NAME')) {
+            $this->warning = $this->l('No name provided');
         }
-  }
+    }
 
     public function install()
     {    
-       include(dirname(__FILE__).'\sql\install.php');      
-       return parent::install() &&
-       $this->registerHook('actionObjectAddAfter') &&
-       $this->registerHook('actionObjectDeleteAfter') &&
-       $this->registerHook('actionObjectUpdateAfter');
-       
+        include(dirname(__FILE__).'\sql\install.php');      
+        return parent::install() &&
+        $this->registerHook('actionObjectAddAfter') &&
+        $this->registerHook('actionObjectDeleteAfter') &&
+        $this->registerHook('actionObjectUpdateAfter');    
     }
 
     public function hookActionObjectAddAfter($params)
@@ -73,9 +71,9 @@ class Wim_objectlogguer extends Module
         $annad->message = "Object ". get_class($params['object']) . " with id " . $params['object']->id . " add";
         $annad->date_add = date("Y-m-d H:i:s");
 
-        if(get_class($params['object']) != 'ObjectLogger') 
+        if(get_class($params['object']) != 'ObjectLogger')
         {
-          $annad->add();
+            $annad->add();
         }
     }
 
@@ -89,9 +87,9 @@ class Wim_objectlogguer extends Module
         $dele->message = "Object ". get_class($params['object']) . " with id " . $params['object']->id . " delete";
         $dele->date_add = date("Y-m-d H:i:s");
 
-        if(get_class($params['object']) != 'ObjectLogger') 
+        if(get_class($params['object']) != 'ObjectLogger')
         {
-          $dele->add();
+            $dele->add();
         }
     }
 
@@ -104,9 +102,9 @@ class Wim_objectlogguer extends Module
         $up->message = "Object ". get_class($params['object']) . " with id " . $params['object']->id . " update";
         $up->date_add = date("Y-m-d H:i:s");
 
-        if(get_class($params['object']) != 'ObjectLogger') 
+        if(get_class($params['object']) != 'ObjectLogger')
         {
-          $up->add();
+            $up->add();
         }
     }   
 }
